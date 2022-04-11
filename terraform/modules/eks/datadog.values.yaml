@@ -1,0 +1,32 @@
+datadog:
+  apiKey: 4364356457464578453645
+  apm:
+    enabled: true
+  confd:
+    vault.yaml: |-
+      init_config:
+      instances:
+        - api_url: https://vault.testtest.com/v1
+          no_token: true
+  dogstatsd:
+    nonLocalTraffic: true
+    port: 8125
+    useHostPort: true
+  logs:
+    containerCollectAll: true
+    containerCollectUsingFile: true
+    enabled: true
+  serviceTopology:
+    enabled: true
+    serviceName: datadog-agent
+  site: datadoghq.eu
+
+  env:
+    - name: "LOG4J_FORMAT_MSG_NO_LOOKUPS"
+      value: "true"
+
+agents:
+  enabled: true
+  image:
+     name: agent
+     tag : 7.32.2
